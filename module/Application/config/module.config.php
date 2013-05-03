@@ -11,9 +11,12 @@ return array(
     'router' => array(
         'routes' => array(
         	'rest' => array(
-        		'type' => 'ZendMvcRouterHttpSegment',
+        		'type' => 'Segment',
         		'options' => array(
         			'route' => '/:controller[.:formatter][/:id]',
+        			'defaults' => array(
+        				'__NAMESPACE__' => 'Application\Controller',
+        			),
         			'constraints' => array(
         				'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
         				'formatter' => '[a-zA-Z][a-zA-Z0-9_-]*',

@@ -17,7 +17,10 @@ use Zend\View\Model\JsonModel;
 class RestController extends AbstractRestfulController{
 	
 	public function getList() {
-		return array("users" => array());
+		return new JsonModel(array(
+            array('name' => 'test'),
+            array('name' => 'second')
+        ));
 	}
 	
 	public function get($id) {
