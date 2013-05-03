@@ -42,56 +42,5 @@ class IndexController extends AbstractActionController{
 	public function historieAction(){
         return new ViewModel();
     }
-
-	public function standorteAction(){
-        return new ViewModel();
-    }
-
-	public function ansprechpartnerAction(){
-        return new ViewModel();
-    }
-
-	public function einkaufAction(){
-        return new ViewModel();
-    }
-
-	public function qualitaetAction(){
-        return new ViewModel();
-    }
-
-	public function unternehmenAction(){
-        return new ViewModel();
-    }
-
-	public function kabelkonfektionAction(){
-        return new ViewModel();
-    }
-
-	public function baugruppenfertigungAction(){
-        return new ViewModel();
-    }
-
-	public function kunststoffumspritzungAction(){
-        return new ViewModel();
-    }
-
-	public function vulkanisationAction(){
-        return new ViewModel();
-    }
-
-	public function baugruppenmontageAction(){
-        return new ViewModel();
-    }
-
-	public function prueftechnologienAction(){
-        return new ViewModel();
-    }
-
-	public function contactAction(){
-        return new ViewModel();
-    }
-
-	public function impressumAction(){
-        return new ViewModel();
-    }
+    
 }
