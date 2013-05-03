@@ -13,18 +13,26 @@ return array(
         	'rest' => array(
         		'type' => 'Segment',
         		'options' => array(
-        			'route' => '/:controller[.:formatter][/:id]',
+        			'route' => '/rest',
         			'defaults' => array(
         				'__NAMESPACE__' => 'Application\Controller',
         				'controller' => 'Application\Controller\Rest',
-        				'action'     => 'index',
-        			),
-        			'constraints' => array(
-        				'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-        				'formatter' => '[a-zA-Z][a-zA-Z0-9_-]*',
-        				'id' => '[a-zA-Z0-9_-]*'
         			),
         		),
+        		'may_terminate' => true,
+        		'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/:controller[/:id][/]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
         	),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',

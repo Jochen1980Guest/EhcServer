@@ -19,7 +19,7 @@ Rechtesystem Nutzer, Dienstleister-Rollen klaeren;
 === === Skeleton-Anpassung === ===
 
 === === Einbau Rest Webservice === ===
-
+http://dustint.com/post/543/getting-started-with-abstractrestfulcontroller
 
 
 === === Github und EGit === ===
