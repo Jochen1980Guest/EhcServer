@@ -20,8 +20,7 @@ Rechtesystem Nutzer, Dienstleister-Rollen klaeren;
 
 === === Einbau Rest Webservice === ===
 
-Idee minimalste Loesung: 
-http://jacekonthings.blogspot.de/2012/05/how-to-create-restful-api-in-zend.html
+
 
 === === Github und EGit === ===
 Repository ist erreichbar unter 
