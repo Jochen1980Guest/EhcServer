@@ -22,25 +22,42 @@ class RestController extends AbstractRestfulController{
 	}
 	
 	public function getList() {
+		// HTTP GET 
 		return new JsonModel(array(
             array('name' => 'test'),
-            array('name' => 'second')
+            array('name' => 'getlist')
         ));
 	}
 	
 	public function get($id) {
-		return array("id" => $id);
+		// HTTP GET id
+		return new JsonModel(array(
+            array('name' => 'test'),
+            array('name' => 'get')
+        ));
 	}
 	
 	public function create($data) {
-		return array("created" => "yes");
+		// HTTP PUT
+		return new JsonModel(array(
+            array('name' => 'test'),
+            array('name' => 'create')
+        ));
 	}
 	
 	public function update($id, $data) {
-		return array("updated" => "yes");
+		// HTTP PUT id
+		return new JsonModel(array(
+            array('name' => 'test'),
+            array('name' => 'update')
+        ));
 	}
 	
 	public function delete($id) {
-		return array("deleted" => $i);
+		// HTTP DELETE id
+		return new JsonModel(array(
+            array('name' => 'test'),
+            array('name' => 'delete')
+        ));
 	}
 }
