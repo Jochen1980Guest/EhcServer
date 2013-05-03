@@ -18,12 +18,10 @@ use Zend\View\Model\ViewModel;
 class RestController extends AbstractRestfulController{
 	
 	public function indexAction(){
-		Debug::dump("indexAction()");
 		return  new ViewModel();
 	}
 	
 	public function getList() {
-		Debug::dump("getList()");
 		return new JsonModel(array(
             array('name' => 'test'),
             array('name' => 'second')
