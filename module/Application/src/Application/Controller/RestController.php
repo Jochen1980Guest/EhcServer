@@ -13,8 +13,13 @@ use Zend\Db\Adapter\Adapter;
 use Zend\Debug\Debug;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
+use Zend\View\Model\ViewModel;
 
 class RestController extends AbstractRestfulController{
+	
+	public function indexAction(){
+		return  new ViewModel();
+	}
 	
 	public function getList() {
 		return new JsonModel(array(

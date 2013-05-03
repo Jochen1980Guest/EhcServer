@@ -16,6 +16,8 @@ return array(
         			'route' => '/:controller[.:formatter][/:id]',
         			'defaults' => array(
         				'__NAMESPACE__' => 'Application\Controller',
+        				'controller' => 'Application\Controller\Rest',
+        				'action'     => 'index',
         			),
         			'constraints' => array(
         				'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
