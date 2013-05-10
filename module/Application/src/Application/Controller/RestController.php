@@ -18,7 +18,7 @@ use Zend\View\Model\ViewModel;
 class RestController extends AbstractRestfulController{
 	
 	public function indexAction(){
-		return  new ViewModel();
+		return new ViewModel();
 	}
 	
 	public function getList() {
@@ -30,17 +30,20 @@ class RestController extends AbstractRestfulController{
 	}
 	
 	public function get($id) {
+		//Debug::dump("get-id");
 		// HTTP GET id
 		return new JsonModel(array(
-            array('name' => 'test'),
+            array('name' => 'test' . $id),
             array('name' => 'get')
         ));
 	}
 	
 	public function create($data) {
-		// HTTP PUT
+		// HTTP POST
+		//$id = $this->getPizzaService()->add($data);
+		$id = "5";
 		return new JsonModel(array(
-            array('name' => 'test'),
+            array('name' => 'test' . $id),
             array('name' => 'create')
         ));
 	}
