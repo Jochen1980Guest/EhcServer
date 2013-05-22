@@ -4,12 +4,13 @@
 
 === Notizen zum Projekt ========================================================
 
-Version 1.0 [01.05.2013]
+Version 1.0.1 [22.05.2013]
 
 Localhost-Url: http://ehcserver.localhost/
+Datenbank: ehc, eigener user;
 
 === === TODOs === ===
-Rechtesystem Nutzer, Dienstleister-Rollen klaeren;
+siehe github;
 
 === === Versionsverwaltung Github === ===
 Repository ist erreichbar unter 

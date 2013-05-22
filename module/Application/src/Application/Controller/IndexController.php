@@ -18,6 +18,9 @@ use Zend\View\Model\ViewModel;
 class IndexController extends AbstractActionController{
 
     public function indexAction(){
+    	// Check Session
+    	
+    	
     	// db interaction
     	$db = $this->getServiceLocator()->get('db');
     	$query = "SELECT * FROM widget WHERE name LIKE 'home';";
@@ -41,6 +44,19 @@ class IndexController extends AbstractActionController{
 
 	public function historieAction(){
         return new ViewModel();
+    }
+    
+    public function testAction(){
+    	// create action controller, testAction()
+    	// create route in module.config.php
+    	
+    	// return Model for corresponding view, test.phtml
+    	$header = "IndexController.testAction()";
+    	$content = "Testcontent.";
+    	return new ViewModel(array(
+        		'header' => $header,
+        		'content' => $content
+    			));
     }
     
 }
