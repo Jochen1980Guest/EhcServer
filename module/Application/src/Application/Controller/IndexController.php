@@ -359,18 +359,20 @@ class IndexController extends AbstractActionController{
 //     	}
     	
     	// Read One
-    	$content .= "<h2>Resident By Id</h2>";
-    	$resident = $this->getResidentService()->fetchSingleById(1);
-    	Debug::dump($resident);
-    	$content .= "<p>";
-    	$content .= $resident;
-    	$content .= "</p>";
-    	$content .= "<h2>Room By Id</h2>";
-    	$room = $this->getRoomService()->fetchSingleById(2);
-    	Debug::dump($room);
-    	$content .= "<p>";
-    	$content .= $room;
-    	$content .= "</p>";
+//     	$content .= "<h2>Resident By Id</h2>";
+//     	$resident = $this->getResidentService()->fetchSingleById(1);
+//     	Debug::dump($resident);
+//     	$content .= "<p>";
+//     	$content .= $resident;
+//     	$content .= "</p>";
+//     	$content .= "<h2>Room By Id</h2>";
+//     	$room = $this->getRoomService()->fetchSingleById(2);
+//     	Debug::dump($room);
+//     	$content .= "<p>";
+//     	$content .= $room;
+//     	$content .= "</p>";
+
+    	// Update
     	
     	return new ViewModel(array(
         		'header' => $header,
