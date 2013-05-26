@@ -17,21 +17,19 @@ use Zend\View\Model\ViewModel;
 
 class RestController extends AbstractRestfulController{
 	
-	public function indexAction(){
-		return new ViewModel();
-	}
-	
 	public function getList() {
 		// HTTP GET 
+		// 
 		return new JsonModel(array(
-            array('name' => 'test'),
-            array('name' => 'getlist')
+			'data' => $this->getAppService()->fetchList(),
         ));
 	}
 	
 	public function get($id) {
 		//Debug::dump("get-id");
 		// HTTP GET id
+		// Call: http://ehcserver.localhost/rest/4
+		// Testen via RESTClient Firefox-Addon!
 		return new JsonModel(array(
             array('name' => 'test' . $id),
             array('name' => 'get')

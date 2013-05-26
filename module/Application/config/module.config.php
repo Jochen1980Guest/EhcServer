@@ -43,6 +43,16 @@ return array(
             		),
             	),
             ),
+            'login' => array(
+            		'type' => 'Zend\Mvc\Router\Http\Literal',
+            		'options' => array(
+            				'route'    => '/index/login',
+            				'defaults' => array(
+            						'controller' => 'Application\Controller\Index',
+            						'action'     => 'login',
+            				),
+            		),
+            ),
             'test' => array(
             		'type' => 'Zend\Mvc\Router\Http\Literal',
             		'options' => array(
@@ -85,9 +95,16 @@ return array(
 //             ),
         ),
     ),
+    'controllers' => array(
+    		'invokables' => array(
+    				'Application\Controller\Index' 	=> 'Application\Controller\IndexController',
+    				'Application\Controller\Rest' 	=> 'Application\Controller\RestController'
+    		),
+    ),
     'service_manager' => array(
         'factories' => array(
             'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
+            'Application\Service\User'  => 'Application\Service\UserServiceFactory',
         ),
     ),
     'translator' => array(
@@ -98,12 +115,6 @@ return array(
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
             ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' 	=> 'Application\Controller\IndexController',
-            'Application\Controller\Rest' 	=> 'Application\Controller\RestController'
         ),
     ),
     'view_manager' => array(
