@@ -381,6 +381,14 @@ class IndexController extends AbstractActionController{
 
     	// Update
     	
+    	
+    	// Einbau Benutzermanagement
+    	// Modul User anlegen, siehe https://github.com/ZF2Buch/kapitel17
+    	// Ordner User (hier die Startvariante) in module unterbringen
+    	
+    	
+    	// Rauswurf auf Login-Screen
+    	
     	return new ViewModel(array(
         		'header' => $header,
         		'content' => $content

@@ -74,10 +74,12 @@ class RoomService {
     
     public function fetchList($page = 1, $perPage = 15)
     {
-    	return array(
-    			1 => "moep",
-    			2 => "maap"
-    			);
+    	// TODO vermutlich bekommt der Aufruf via Rest eine eigene Methode,
+    	// oder der RestController baut das Objekt bzw. die Liste in ein Array um;
+//     	return array( 
+//     			1 => "moep",
+//     			2 => "maap"
+//     			);
         // Initialize select
     	$select = $this->getTable()->getSql()->select();
     	
@@ -101,9 +103,9 @@ class RoomService {
                 
         // get blog entity
         if ($mode == 'create') {
-            $blog = new BlogEntity();
+            $room = new RoomEntity();
         } else {
-            $blog = $this->fetchSingleById($id);
+            $room = $this->fetchSingleById($id);
         }
         
         // get form and set data
@@ -117,13 +119,13 @@ class RoomService {
         }
         
         // get valid blog entity object
-        $blog->exchangeArray($form->getData());
+        $room->exchangeArray($form->getData());
         
         // set values
-        if ($mode == 'create') {
-            $blog->setCdate(date('Y-m-d H:i:s'));
-        }
-        $blog->setUrl(StaticFilter::execute($blog->getTitle(), 'StringToUrl'));
+//         if ($mode == 'create') { // optionale Attribute die bei neu zu kreierenden Objekten zu setzen sind;
+//             $room->setCdate(date('Y-m-d H:i:s'));
+//         }
+        $room->setUrl(StaticFilter::execute($room->getTitle(), 'StringToUrl')); // passend anpassen und auf andere Attribute erweitern;
         
         // get insert data
         $saveData = $blog->getArrayCopy();
