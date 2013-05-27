@@ -9,19 +9,64 @@
 
 namespace Application\Controller;
 
+use Application\Service\RoomService;
+
 use Zend\Db\Adapter\Adapter;
 use Zend\Debug\Debug;
 use Zend\Mvc\Controller\AbstractRestfulController;
+use Zend\Db\TableGateway\TableGateway;
 use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
 
 class RestController extends AbstractRestfulController{
 	
+	protected $userService;
+	protected $roomService;
+	protected $residentService;
+	
+	public function setUserService(UserService $userService){
+		$this->userService = $userService;
+		return $this;
+	}
+	
+	public function getUserService(){
+		return $this->userService;
+	}
+	
+	public function setRoomService(RoomService $roomService){
+		$this->roomService = $roomService;
+		return $this;
+	}
+	
+	public function getRoomService(){
+		return $this->roomService;
+	}
+	
+	public function setResidentService(ResidentService $residentService){
+		$this->residentService = $residentService;
+		return $this;
+	}
+
+	public function getResidentService(){
+		return $this->residentService;
+	}
+
 	public function getList() {
-		// HTTP GET 
-		// 
+		// HTTP GET
+		$db = $this->getServiceLocator()->get('db');
+		$roomTable = new TableGateway('room', $db);
+		$this->setRoomService(new RoomService($roomTable));
+		
+// 		$rows = $this->getRoomService()->fetchList();
+// 		//$rows = $tempService->fetchSingleById(array('id', 1));
+// 		foreach($rows as $row){
+// 			Debug::dump($row->getArrayCopy());
+// 		    		$content .= "<p>";
+// 		    		$content .= $row['username'];
+// 		    		$content .= "</p>";
+// 		    	}
 		return new JsonModel(array(
-			'data' => $this->getAppService()->fetchList(),
+			'data' => $this->getRoomService()->fetchList(),
         ));
 	}
 	

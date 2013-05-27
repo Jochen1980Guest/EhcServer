@@ -23,6 +23,7 @@ use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Debug\Debug;
+use Zend\Http\Client;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Permissions\Acl\Acl;
 use Zend\Session\Container;
@@ -217,7 +218,13 @@ class IndexController extends AbstractActionController{
     	// return Model for corresponding view, test.phtml
     	$header = "IndexController.testAction()";
     	$content = "";
-    	$content .= "<h2>Webclient</h2>";
+//     	$content .= "<h2>Webclient</h2>";
+//     	//$urlString = "http://ehcserver.localhost/rest/4";
+//     	$urlString = "http://ehcserver.localhost/rest";
+//     	$client = new Client($urlString);
+//     	$client->setMethod('get');
+//     	$response = $client->send();
+//     	$content .= "<pre>" . $response->getContent() . "</pre>";
     	
     	// ZendLog
 //     	$logFile = APP_ROOT . '/data/logs/application.log';
@@ -320,19 +327,19 @@ class IndexController extends AbstractActionController{
     	// Services in ...
     	
     	//$tempResidentService = new ResidentService();
-    	$db = $this->getServiceLocator()->get('db');
-//     	$resultSetPrototypeRoom = new ResultSet(ResultSet::TYPE_ARRAYOBJECT, new RoomEntity());
-//     	$roomTable = new TableGateway('room', $db, null, $resultSetPrototypeRoom);
-     	$roomTable = new TableGateway('room', $db); 
-    	//$resultSetPrototypeResident = new ResultSet(ResultSet::TYPE_ARRAYOBJECT, new ResidentEntity());
-    	//$residentTable = new TableGateway('resident', $db, null, $resultSetPrototypeResident);
-    	$residentTable = new TableGateway('resident', $db);
-    	$tempRoomService = new RoomService();
-    	$tempResidentService = new ResidentService();
-    	$tempRoomService->setTable($roomTable);
-    	$tempResidentService->setTable($residentTable);
-    	$this->setRoomService($tempRoomService);
-    	$this->setResidentService($tempResidentService);
+//     	$db = $this->getServiceLocator()->get('db');
+// //     	$resultSetPrototypeRoom = new ResultSet(ResultSet::TYPE_ARRAYOBJECT, new RoomEntity());
+// //     	$roomTable = new TableGateway('room', $db, null, $resultSetPrototypeRoom);
+//      	$roomTable = new TableGateway('room', $db); 
+//     	//$resultSetPrototypeResident = new ResultSet(ResultSet::TYPE_ARRAYOBJECT, new ResidentEntity());
+//     	//$residentTable = new TableGateway('resident', $db, null, $resultSetPrototypeResident);
+//     	$residentTable = new TableGateway('resident', $db);
+//     	$tempRoomService = new RoomService();
+//     	$tempResidentService = new ResidentService();
+//     	$tempRoomService->setTable($roomTable);
+//     	$tempResidentService->setTable($residentTable);
+//     	$this->setRoomService($tempRoomService);
+//     	$this->setResidentService($tempResidentService);
     	
     	// CRUD 
     	//Debug::dump($this->getRoomService()->fetchList());

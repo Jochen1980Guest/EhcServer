@@ -74,6 +74,10 @@ class RoomService {
     
     public function fetchList($page = 1, $perPage = 15)
     {
+    	return array(
+    			1 => "moep",
+    			2 => "maap"
+    			);
         // Initialize select
     	$select = $this->getTable()->getSql()->select();
     	
