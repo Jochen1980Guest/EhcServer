@@ -400,13 +400,45 @@ class IndexController extends AbstractActionController{
     	// Einbau Benutzermanagement ZfcUser
     	// ZfcBase und dann ZfcUser holen und einhaengen;
     	// https://github.com/ZF-Commons/ZfcUser
-    	// SignIn-View erscheint, siehe ;
+    	// SignIn-View erscheint, siehe index.phtml und indexAction();
+    	// Ziel ZfcUser-Modul unangetastet lassen.
+    	// Ueberschreibe views via Konvention Application view zfc-user/user login.phtml und Application-Modul nach ZfcUser einbinden;
+    	// Anpassen der Texte;
+    	// TODO Anstreben internationaler Texte;
+    	// Anstreben fehlerhafter Login, siehe Filter mit required;
+    	// Authentication failed Fehlermeldung anpassen;
+    	// Anstreben erfolgreicher Login: mysql schema aus data-Ordner nehmen;
+    	// user: userid, username, email, display_name, password, state;
+    	// Datenbankzugang ermoeglichen, siehe ServiceManager, out of the box;
+    	// Ueberraschung, da wird dann direkt der Gravatar mit angezeigt;
+    	// Speicherung erfolgt direkt verschluesselt in der Datenbank; 
+    	// View nach erfolgreichem customizen;
     	
     	// -------------------------------------
     	// Rauswurf auf Login-Screen
-    	if (1 == 1){ // TODO Session Check
-    		return $this->redirect()->toRoute('zfcuser');
-    	} // Regelfall
+//     	if ($this->zfcUserAuthentication()->hasIdentity()) {
+//     		//get the email of the user
+//     		$content .= "<p>Hallo!</p><p>Ihre Daten:<br />";
+//     		$content .= $this->zfcUserAuthentication()->getIdentity()->getEmail();
+//     		$content .= "<br />";
+//     		//get the user_id of the user
+//     		$content .= $this->zfcUserAuthentication()->getIdentity()->getId();
+//     		$content .= "<br />";
+//     		//get the username of the user
+//     		$content .= $this->zfcUserAuthentication()->getIdentity()->getUsername();
+//     		$content .= "<br />";
+//     		//get the display name of the user
+//     		$content .= $this->zfcUserAuthentication()->getIdentity()->getDisplayname();
+//     		$content .= "</p>";
+//     	} else {
+//     		return $this->redirect()->toRoute('zfcuser');
+//     	}
+
+    	// Mail mit ZF2 verschicken
+    	// http://www.michaelgallego.fr/blog/2012/07/19/how-to-use-zendmail/
+    	// http://chalitstory.blogspot.de/2012/10/zend-framework-2-send-html-mail.html
+    	
+    	// Kontaktformular siehe PhlyContact
     	
     	return new ViewModel(array(
         		'header' => $header,

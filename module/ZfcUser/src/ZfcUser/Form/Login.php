@@ -41,7 +41,7 @@ class Login extends ProvidesEventsForm
         $this->add(array(
             'name' => 'credential',
             'options' => array(
-                'label' => 'Password',
+                'label' => 'Passwort',
             ),
             'attributes' => array(
                 'type' => 'password',
@@ -59,7 +59,7 @@ class Login extends ProvidesEventsForm
 
         $submitElement = new Element\Button('submit');
         $submitElement
-            ->setLabel('Sign In')
+            ->setLabel('Abschicken')
             ->setAttributes(array(
                 'type'  => 'submit',
             ));
