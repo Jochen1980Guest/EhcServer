@@ -381,13 +381,32 @@ class IndexController extends AbstractActionController{
 
     	// Update
     	
-    	
-    	// Einbau Benutzermanagement
+    	// Einbau Benutzermanagement Eggert:
     	// Modul User anlegen, siehe https://github.com/ZF2Buch/kapitel17
     	// Ordner User (hier die Startvariante) in module unterbringen
+    	// Scan des Moduls auf Quelltextebene:
+    	// Einhaengen in application, also Root-config-application.config.php
+    	// Check der user route;
+    	// Pitfall: pageTitle-Helper ist nicht da. Es gibt einen korrespondierenden ViewHelper in Application ist da oder man unterbindet den Aufruf, hier die Variante; 
+    	// TODO Check Vorteil ViewHelper PageTitle.php;
+    	// UserController.indexAction() wird bei user-Route gerufen;
+    	// Es wird direkt auf den View durchgefasst;
+    	// TODO Check Funktionsweise UserController implementiert eigenes Interface und nutzt DI auf ServiceInjection;
+    	// Sofern der php-Code auskommentiert ist, werden die Buttons angezeigt;
+    	// Verwaltungslink in Navigation unterbringen via layout.phtml Anpassung;
+    	// Hart umbiegen auf Controller-Level via return $this->redirect()->toRoute('user');
+    	// Button User registrieren umsetzen: route anlegen; // Known Zf2Buch-Bug!
     	
+    	// Einbau Benutzermanagement ZfcUser
+    	// ZfcBase und dann ZfcUser holen und einhaengen;
+    	// https://github.com/ZF-Commons/ZfcUser
+    	// SignIn-View erscheint, siehe ;
     	
+    	// -------------------------------------
     	// Rauswurf auf Login-Screen
+    	if (1 == 1){ // TODO Session Check
+    		return $this->redirect()->toRoute('zfcuser');
+    	} // Regelfall
     	
     	return new ViewModel(array(
         		'header' => $header,
