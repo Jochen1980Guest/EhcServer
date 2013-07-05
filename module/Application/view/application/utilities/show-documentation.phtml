@@ -1,0 +1,75 @@
+<!-- Test und Debugausgaben -->
+<div class="row" style="border: 1px solid orange;">
+    <div class="span12">
+    	<h1>Dokumentation</h1>
+    	<h2>Entwicklerdokumentation</h2>
+    	<h3>Überblick</h3>
+    	<p>
+    	Eine Webanwendung ermöglicht es externen Diensten, wie etwa dem Pflegedienst, dass Daten über 
+    	das Internet abgefragt werden können und Aktionen angestoßen werden können. Als Webframework 
+    	wird das ZendFramework (ZF) in der Version 2 eingesetzt. Intern setzt das ZF auf das 
+    	Model-View-Controller-Muster (MVC). MVC verbessert die Übersichtlichkeit der Anwendung, führt 
+    	Schichten ein und führt so zu einer verbesserten Erweiter- und Wartbarkeit. Die Dokumente 
+    	werden mit HTML5 ausgezeichnet und als Oberflächen-Toolkit wird Twitter Bootstrap eingesetzt.
+    	</p>
+    	<p>
+    	Ein Tablet soll in der Wohnung als universelle Schnittstelle zur schlauen Wohnung dienen. 
+    	Aktuell laufen Versuche, die Webanwendung via iPad-Safari anzusteuern bzw. eine iOS-App zu
+    	erstellen. 
+    	</p>
+    	<p>
+    	Die Qualität der entstehenden Software wird durch den Einsatz agiler Methoden gesichert. Genauer
+    	wird testgetrieben entwickelt (Unittests, Seleniumtests), es wird eine Versions- und Projektverwaltung
+    	(Git, Github) eingesetzt; 
+    	</p>
+    	<h3>Einbau eines Anwendungsfalles in ZF-MVC-Struktur</h3>
+    	<p>
+    	Am Beispiel des Anwendungsfalles 'zeige Dokumentation' soll das Zusammenspiel des ZF
+    	gezeigt werden. Der Eingang in den Anwendungsfalles erfolgt durch einen Link, hier 
+    	in Modul Application, view-utilities, index.pthml der Anker mit der Auszeichnung 
+    	'$this...url('documentation'). In der module.config.php des Moduls wird die Route 
+    	spezifiziert, also bestimmt,  welche Action-Methode welchen Controllers relevant ist.
+    	Achtung die 'showDocumentation-Action wird standardmäßig an show-documentation.phtml 
+    	weitergeleitet. Im Controller befindet sich eine Action-Methode, die durchlaufen wird 
+    	und an den View weiterleitet. Es können hier Variablen für den View mitübergeben werden.
+    	</p>
+    	<h3>Anlegen eines Selenium-Testfalles</h3>
+    	<p>
+    	Am Beispiel des Anwendungsfalles 'Startseite der Webanwendung wird aufgerufen und 
+    	Willkommens-Nachricht erscheint' soll gezeigt werden, wie Selenium genutzt werden kann. 
+    	Es gibt fuer das Projekt 'SeleniumWebAgent' ein src-Paket für den EhcServer, hier ehc.
+    	Selenium wird hier mit dem Java-Client genutzt, ein Wechsel von der PHP- in die 
+    	Java-Perspective der IDE ist also angebracht. Die Methode testIndex() der Klasse EhcTests
+    	wird dann als JUnit-Test gestartet. 
+    	</p>
+    	<h3>Anlegen eines Unit-Testfalles</h3>
+    	<p>
+		Selenium hilft das Systemverhalten auf Basis der Oberfläche zu testen. Es ist auch
+		möglich, ausgehend von den Methoden Tests zu schalten. Diese Unittests werden 
+		üblicherweise mit einem Framework, etwa JUnit für Java implementiert. Leider gelang
+		bis dato die Konfiguration von phpunit in Verbindung mit dem ZF noch nicht. Deshalb
+		wird sich mit eigenen Testmethoden beholfen, siehe NavigationsItem 'Utilities'. Es 
+		gibt dort UtilitiesController.testAction(), diese feuert die TestSuite ab, sammelt
+		die Ergebnisse der Testmethoden und stellt diese im zugehörigen View dar. Jede 
+		Testmethode, also eine Methode die genau eine andere Methode testet, muss dabei 
+		innerhalb der Methode runTestSuites() bekannt gemacht werden und muss dabei das
+		Testergebnis in der Objekteigenschaft testResults mit einhaengen. Ein Beispiel 
+		ist die Methode 'testUtilitiesReadLastLinesOfFile()' aus dem UtilitiesController.
+    	</p>
+    	<h3>Ausloten des Systemverhaltens 'Rumspielen'</h3>
+    	<p>
+    	Es gibt die Route temp um irgendetwas vor sich hin zu entwickeln. Der Anwendungsfall
+    	kann durch den Link in der Navigation getriggert werden. Die zugehörige Action ist 
+    	im IndexController. Der zugehörige SeleniumTest ist lautet testTemp
+    	</p>
+    	<h2>Anwenderdokumentation</h2>
+    	<h3>Anwendungsfälle</h3>
+    	<p>
+    	Anwendungsfall 'Startseite der Webanwendung wird aufgerufen und Willkommens-Nachricht 
+    	erscheint'
+    	</p>
+    	<p>
+    	Anwendungsfall 'Bewohner loggt sich ein und sieht Profilseite' 
+    	</p>
+    </div>
+</div>

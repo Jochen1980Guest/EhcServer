@@ -1,0 +1,11 @@
+<!-- Test und Debugausgaben -->
+<div class="row" style="border: 1px solid orange;">
+    <div class="span12">
+    	<h1>Tests</h1>
+<?php 
+foreach($testResults as $testResult){
+	echo "<p>Test " . $testResult['name'] . ": " . $testResult['result'] . "; </p>";
+}
+?>
+    </div>
+</div>

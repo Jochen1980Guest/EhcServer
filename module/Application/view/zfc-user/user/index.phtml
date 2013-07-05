@@ -1,0 +1,55 @@
+<div style="float:left; padding-right:16px;">
+<?php 
+	echo $this->gravatar($this->zfcUserIdentity()->getEmail()) 
+?>
+</div>
+<h3>Hallo <?php echo $this->zfcUserDisplayName() ?></h3>
+<div style="clear:both;"></div>
+<div class="row">
+    <div class="span12">
+        <h2>Einstellungen</h2>
+        <p>
+        	<a class="btn" href="<?php echo $this->url('zfcuser/logout') ?>">Ausloggen</a>
+        	<a class="btn" href="<?php echo $this->url('zfcuser/changeemail') ?>">E-Mail ändern</a>
+        	<a class="btn" href="<?php echo $this->url('zfcuser/changepassword') ?>">Passwort ändern</a>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h2>Systemnachrichten</h2>
+<?php 
+foreach($logMessages as $logMessage){
+	echo "<p>" . $logMessage . "</p>";
+}
+?>
+ 		<p>
+        	<a class="btn" href="<?php echo $this->url('clearlog') ?>">Systemnachrichten löschen</a>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h2>Räume</h2>
+<?php 
+// paginator
+foreach($roomsPaginator->getCurrentItems() as $room){
+	echo "<p>Name: " . $room['name'] . "; Luftfeuchtigkeit: " . $room['humidity'] . ";  <a class='btn' href=''>Betreten &raquo;</a></p>";
+}
+?>     
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h2>Haussystem</h2>
+        <p>Energiefüllstand Solaranlage; Anzahl der Benutzer; Datenzugriffe extern;</p>
+        <p><a class="btn btn-success" href="http://framework.zend.com/zf2" target="_blank">Betreten &raquo;</a></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h2>Dokumentation</h2>
+        <h3>Anwendungsfälle</h3>
+        <p>Die Temperatur um ein Grad erhöhen.</p>
+    </div>
+</div>

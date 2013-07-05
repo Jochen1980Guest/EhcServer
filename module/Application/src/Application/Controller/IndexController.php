@@ -80,7 +80,8 @@ class IndexController extends AbstractActionController{
         return new ViewModel(
         	array(
         		'header' => $header,
-        		'content' => $content
+        		'content' => $content,
+        		'loginUrl' => $this->url('login')
         	) 
         );
     }
@@ -90,151 +91,25 @@ class IndexController extends AbstractActionController{
     }
     
     public function loginAction(){
-    	// Session erkunden
-    	$userSession = new Container('user');
-    	$username = $userSession->username;
-    	 
-    	// set variables for default layout
-    	$this->layout()->pageTitle 		= "SKP-Technik | Login";
-    	$this->layout()->navBreadcrumb 	= "Ort: Login";
-    	 
-    	// initialize important variables
-    	$form = "";
-    	$header = "";
-    	$message = "";
-    	$isPost = "";
-    	$postData = "";
-    	$isLoginTry = "";
-    	$isValidLoginTry = "";
-    	$isLogoutTry = "";
-    	$isValidLogoutTry = "";
-    	$validData = "";
-    	 
-    	// create forms
-    	$loginForm = new LoginForm();
-    	$logoutForm = new LogoutForm();
-    	 
-    	// relevant flags
-    	$isPost = $this->getRequest()->isPost();
-    	if ($isPost){
-    		$postData = $this->getRequest()->getPost();
-    		if ($postData['submit'] == "Einloggen"){
-    			$isLoginTry = true;
-    			$form = new LoginForm();
-    			$form->setData($postData);
-    			if ($form->isValid()){
-    				$isValidLoginTry = true;
-    			}
-    		}
-    		if ($postData['submit'] == "Ausloggen"){
-    			$isLogoutTry = true;
-    			$form = new LogoutForm();
-    			$form->setData($postData);
-    			if ($form->isValid()){
-    				$isValidLogoutTry = true;
-    			}
-    		}
-    	}
-    	 
-    	// valid login
-    	if ($isValidLoginTry == true){
-    		$validData = $form->getData();
-    		if ($validData['name'] == "skp" && $validData['pass'] == "skp") {
-    			$header = "Eingeloggt";
-    			$userSession = new Container('user');
-    			$userSession->username = 'skp';
-    			$message = "<p style='color: orange;'>Willkommen " . $userSession->username . "!</p>";
-    			$message .= "<p style='font-weight: bold; color: orange;'>Menu:</p>";
-    			$message .= "<p><a href='http://devzf2.jochen-bauer.net/blog-admin'>Nachrichten verwalten</a></p>";
-    			$form = new LogoutForm();
-    			return new ViewModel(
-    					array(
-    							'widgetHeader' 		=> $header,
-    							'form' 				=> $form,
-    							'message'			=> $message
-    					));
-    		} else { // LoginVersuch mit falschen Daten
-    			$header = "Einlogversuch gescheitert!";
-    			$message = "";
-    			$form = new LoginForm();
-    			return new ViewModel(
-    					array(
-    							'widgetHeader' 		=> $header,
-    							'form' 				=> $form,
-    							'message'			=> $message
-    					));
-    		}
-    	}
-    	 
-    	// valid logout
-    	if ($isValidLogoutTry == true){
-    		$validData = $form->getData();
-    		// Session zerstoeren
-    		$username = "";
-    		$userSession->username = "";
-    		$header = "<span style='text-align: center; color: orange;'>Ausloggen erfolgreich</span>";
-    		$message = "";
-    		$form = new LoginForm();
-    		return new ViewModel(
-    				array(
-    						'widgetHeader' 		=> $header,
-    						'form' 				=> $form,
-    						'message'			=> $message
-    				));
-    	
-    	}
-    	 
-    	// default behaviour already logged in
-    	if ($username != ""){
-    		$header = "<span style='text-align: center; color: orange;'>Eingeloggt</span>";
-    		$message = "<p>Willkommen " . $userSession->username . "!</p>";
-    		$message .= "<p style='font-weight: bold; color: orange;'>Menu</span></p>";
-    		$message .= "<p><a href='http://devzf2.jochen-bauer.net/blog-admin'>Nachrichten verwalten</a></p>";
-    		$form = new LogoutForm();
-    		return new ViewModel(
-    				array(
-    						'widgetHeader' 		=> $header,
-    						'form' 				=> $form,
-    						'message'			=> $message
-    				));
-    	}
-    	 
-    	// default behaviour not logged in - show login form, no message
-    	$header = "Einloggen";
-    	$message = "";
-    	$form = $loginForm;
-    	return new ViewModel(
-    			array(
-    					'widgetHeader' 		=> $header,
-    					'form' 				=> $form,
-    					'message'			=> $message
-    			)
-    	);
+		// Weiterleitung an ZfcUser
+    	return $this->redirect()->toRoute('zfcuser');
     }
     
-    public function testAction(){
+    public function tempAction(){
     	// create action controller, testAction()
     	// create route in module.config.php
     	// return Model for corresponding view, test.phtml
-    	$header = "IndexController.testAction()";
+    	$header = "IndexController.tempAction()";
     	$content = "";
-//     	$content .= "<h2>Webclient</h2>";
-//     	//$urlString = "http://ehcserver.localhost/rest/4";
-//     	$urlString = "http://ehcserver.localhost/rest";
-//     	$client = new Client($urlString);
-//     	$client->setMethod('get');
-//     	$response = $client->send();
-//     	$content .= "<pre>" . $response->getContent() . "</pre>";
-    	
-    	// ZendLog
-//     	$logFile = APP_ROOT . '/data/logs/application.log';
-//     	$formatter = new \Zend\Log\Formatter\Simple('%timestamp% - %priorityName% (%priority%), %message% %extra%', 'Y-m-d H:i:s');
-//     	$writer = new \Zend\Log\Writer\Stream($logFile);
-//     	$writer->setFormatter($formatter);
-//     	$logger = new \Zend\Log\Logger();
-//     	$logger->addWriter($writer);
-//     	$testString = "Mein TestString!";
-//     	$logger->log(\Zend\Log\Logger::INFO, $testString);
+    	$content .= "<h2>Webclient</h2>";
+    	// Alternativ Youtube API nutzen
+    	//$urlString = "http://gdata.youtube.com/feeds/api/videos?orderby=published&alt=json&q=ios";
+    	//$urlString = "http://ehcserver.localhost/rest/4";
+    	$urlString = "http://ehcserver.localhost/rest";
+    	$client = new Client($urlString);
+    	$client->setMethod('get');
+    	$response = $client->send();
+    	$content .= "<pre>" . $response->getContent() . "</pre>";
     	
     	// Zend Session 
 //     	$userSession = new Container('user'); // use Zend\Session\Container;

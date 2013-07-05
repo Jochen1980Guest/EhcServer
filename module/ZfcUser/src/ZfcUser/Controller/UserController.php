@@ -2,6 +2,13 @@
 
 namespace ZfcUser\Controller;
 
+use Zend\Db\TableGateway\TableGateway;
+
+use Application\Service\RoomService;
+
+use Application\Controller\UtilitiesController;
+
+use Zend\Debug\Debug;
 use Zend\Form\Form;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\ResponseInterface as Response;
@@ -63,7 +70,25 @@ class UserController extends AbstractActionController
         if (!$this->zfcUserAuthentication()->hasIdentity()) {
             return $this->redirect()->toRoute(static::ROUTE_LOGIN);
         }
-        return new ViewModel();
+        
+        // get lines of log file
+        $utilitiesController = new UtilitiesController();
+        $path = APP_ROOT . '/data/logs/application.log';
+        $numberOfLinesToRead = 10;
+        $logMessages = $utilitiesController->readLastLinesOfFile($path, $numberOfLinesToRead);
+        
+        // get room entities
+        $adapter = $this->getServiceLocator()->get('db');
+        $table = "room";
+        $roomTable = new TableGateway($table, $adapter);
+        $roomService = new RoomService(); // TODO via module.config oder Module.php via DI anliefern
+        $roomService->setTable($roomTable);
+        $roomsPaginator = $roomService->fetchList();
+        //Debug::dump($rooms);
+        return new ViewModel(array(
+        	'logMessages' 		=> $logMessages,
+        	'roomsPaginator'	=> $roomsPaginator,
+        ));
     }
 
     /**

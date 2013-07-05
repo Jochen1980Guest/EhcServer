@@ -6,13 +6,13 @@ use Application\Entity\RoomEntity;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\Exception\InvalidQueryException;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Debug\Debug;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\EventManagerAwareInterface;
 use Zend\Filter\StaticFilter;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\DbSelect;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
-
 
 class RoomService {
     protected $table = null;
@@ -59,6 +59,7 @@ class RoomService {
 
     public function fetchSingleById($id)
     {
+    	Debug::dump("RoomService.fetchSingleById()");
     	$db = $this->getTable()->getAdapter();
     	//Debug::dump($db);
     	$rows = $this->getTable()->select(array('id' => $id));
@@ -72,8 +73,15 @@ class RoomService {
         //return $this->getTable()->fetchSingleById($id);
     }
     
-    public function fetchList($page = 1, $perPage = 15)
-    {
+    public function fetchList($page = 1, $perPage = 15){
+    	if ($page == "JSON"){ // TODO dirty!
+    		Debug::dump("RoomService.fetchList(JSON)");
+    		return array( 
+    			1 => "moep",
+    			2 => "maap"
+    		);
+    	}	
+    	Debug::dump("RoomService.fetchList()");
     	// TODO vermutlich bekommt der Aufruf via Rest eine eigene Methode,
     	// oder der RestController baut das Objekt bzw. die Liste in ein Array um;
 //     	return array( 

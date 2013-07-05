@@ -44,7 +44,6 @@ class ZfcUserDisplayName extends AbstractHelper
             $displayName = $user->getEmail();
             $displayName = substr($displayName, 0, strpos($displayName, '@'));
         }
-
         return $displayName;
     }
 

@@ -56,17 +56,8 @@ class RestController extends AbstractRestfulController{
 		$db = $this->getServiceLocator()->get('db');
 		$roomTable = new TableGateway('room', $db);
 		$this->setRoomService(new RoomService($roomTable));
-		
-// 		$rows = $this->getRoomService()->fetchList();
-// 		//$rows = $tempService->fetchSingleById(array('id', 1));
-// 		foreach($rows as $row){
-// 			Debug::dump($row->getArrayCopy());
-// 		    		$content .= "<p>";
-// 		    		$content .= $row['username'];
-// 		    		$content .= "</p>";
-// 		    	}
 		return new JsonModel(array(
-			'data' => $this->getRoomService()->fetchList(),
+			'data' => $this->getRoomService()->fetchList("JSON"),
         ));
 	}
 	

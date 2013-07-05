@@ -4,13 +4,10 @@
 
 === Notizen zum Projekt ========================================================
 
-Version 1.0.1 [22.05.2013]
+Version 1.0.2 [12.06.2013]
 
 Localhost-Url: http://ehcserver.localhost/
 Datenbank: ehc, eigener user;
-
-=== === TODOs === ===
-siehe github;
 
 === === Versionsverwaltung Github === ===
 Repository ist erreichbar unter 
@@ -22,7 +19,9 @@ Call getList() http://ehcserver.localhost/rest;
 Call get() http://ehcserver.localhost/rest/1;
 http://dustint.com/post/543/getting-started-with-abstractrestfulcontroller
 
+=== === Anwendungsfaelle === ===
+
+=== === Dokumentation === ===
+
 */
-
-
 ?>

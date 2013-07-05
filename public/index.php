@@ -8,7 +8,7 @@ chdir(dirname(__DIR__));
 // Setup autoloading
 require 'init_autoloader.php';
 
-// globale Variablen anlegen
+// create constant
 define('APP_ROOT', realpath(__DIR__ . '/..'));
 
 // Run the application!

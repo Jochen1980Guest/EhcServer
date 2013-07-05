@@ -23,6 +23,16 @@ return array(
 					),
         		),
         	),
+        	'documentation' => array(
+        		'type' => 'Zend\Mvc\Router\Http\Literal',
+        		'options' => array(
+        			'route'    => '/utilities/showDocumentation',
+        				'defaults' => array(
+        					'controller' => 'Application\Controller\Utilities',
+        						'action'     => 'showDocumentation',
+        				),
+        		),
+        	),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -53,13 +63,33 @@ return array(
             				),
             		),
             ),
+            'temp' => array(
+            		'type' => 'Zend\Mvc\Router\Http\Literal',
+            		'options' => array(
+            				'route'    => '/index/temp',
+            				'defaults' => array(
+            						'controller' => 'Application\Controller\Index',
+            						'action'     => 'temp',
+            				),
+            		),
+            ),
             'test' => array(
             		'type' => 'Zend\Mvc\Router\Http\Literal',
             		'options' => array(
-            				'route'    => '/index/test',
+            				'route'    => '/utilities/test',
             				'defaults' => array(
-            						'controller' => 'Application\Controller\Index',
+            						'controller' => 'Application\Controller\Utilities',
             						'action'     => 'test',
+            				),
+            		),
+            ),
+            'utilities' => array(
+            		'type' => 'Zend\Mvc\Router\Http\Literal',
+            		'options' => array(
+            				'route'    => '/utilities/index',
+            				'defaults' => array(
+            						'controller' => 'Application\Controller\Utilities',
+            						'action'     => 'index',
             				),
             		),
             ),
@@ -97,8 +127,9 @@ return array(
     ),
     'controllers' => array(
     		'invokables' => array(
-    				'Application\Controller\Index' 	=> 'Application\Controller\IndexController',
-    				'Application\Controller\Rest' 	=> 'Application\Controller\RestController'
+    				'Application\Controller\Index' 		=> 'Application\Controller\IndexController',
+    				'Application\Controller\Rest' 		=> 'Application\Controller\RestController',
+    				'Application\Controller\Utilities' 	=> 'Application\Controller\UtilitiesController'
     		),
     ),
     'service_manager' => array(
