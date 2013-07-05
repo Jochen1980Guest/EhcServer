@@ -23,6 +23,16 @@ return array(
 					),
         		),
         	),
+        	'clearlog' => array(
+        		'type' => 'Zend\Mvc\Router\Http\Literal',
+        		'options' => array(
+        			'route'    => '/utilities/clearLog',
+        			'defaults' => array(
+        				'controller' => 'Application\Controller\Utilities',
+        					'action'     => 'clearLog',
+        				),
+        		),
+        	),
         	'documentation' => array(
         		'type' => 'Zend\Mvc\Router\Http\Literal',
         		'options' => array(
@@ -42,16 +52,6 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
-            ),
-            'historie' => array(
-            	'type' => 'Zend\Mvc\Router\Http\Literal',
-            	'options' => array(
-            		'route'    => '/index/historie',
-            		'defaults' => array(
-            			'controller' => 'Application\Controller\Index',
-            			'action'     => 'historie',
-            		),
-            	),
             ),
             'login' => array(
             		'type' => 'Zend\Mvc\Router\Http\Literal',

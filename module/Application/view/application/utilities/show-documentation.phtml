@@ -62,6 +62,50 @@
     	kann durch den Link in der Navigation getriggert werden. Die zugehörige Action ist 
     	im IndexController. Der zugehörige SeleniumTest ist lautet testTemp
     	</p>
+    	<h3>Nutzung der Versionsverwaltung GitHub</h3>
+    	<p>
+    	GitHub ist eine Plattform, die auf Basis der Versionsverwaltung Git eine Plattform
+    	anbietet, die es erlaubt, dass Nutzer gemeinsam an Projekten arbeiten. Es verbindet
+    	also Projektmanagement (Issuetracking, etc.) und Versionsverwaltung (Commits, etc.).
+    	Im Zentrum von GitHub steht der Nutzer, also der Entwickler. Dieser Nutzer kann sich 
+    	ein Projekt als Basis holen, hier 'forken'. Der Nutzer hat nun ein eigenes Projekt, 
+    	dass er sich lokal auf seinen Rechner holen kann, hier 'clonen'. Lokal arbeitet er
+    	mit der Versionsverwaltung Git, er kann dann seine Änderungen durch 'Commit And Push'
+    	sowohl lokal als auch auf Github ins Repository einpflegen. 
+    	</p>
+    	<p>
+    	Auf Github können Issues bzw. Tickets formuliert und an einen Nutzer adressiert werden.
+    	Ein Issue besitzt im Idealfall einen Meilenstein, ein Label und einen Nutzer. 
+    	Bestenfalls kann das Issuetracking dann als Doku zum Entwicklungsprozess herangezogen
+    	werden.
+    	</p>
+    	<h3>Weitere Anmerkungen</h3>
+    	<p>
+    	Im App-config-Ordner in der application.config.php steht die Reihenfolge der eingebundenen
+    	Module. Dies ist insofern wichtig, da Views von nachher eingebundenen Modulen vorherige
+    	Views überschreiben. Man kann so bestehende Views 'erweitern'.
+    	</p>
+    	<p>
+    	Im Modul-config-Ordner liegt die module.config.php mit den Routen und den anderen später
+    	zu injizierenden Objekten, wie etwa den Controller-Instanzen oder den Übersetzer-Objekten.
+    	</p>
+    	<p>
+    	Die Übersetzungsstrategie ist aktuell behelfsmäßig umgesetzt, das locale-Objekt funktioniert
+    	mit PHP 5.3 beim Provider nicht, daher gibt es die Option via Utilities.translateKey() das 
+    	PHP-File auszulesen. Die translator-Angaben werden vorerst noch in der module.config belassen.
+    	</p>
+    	<p>
+    	Entity-Objekt besitzen Eigenschaften, die Accessor-Methoden und implementieren das 
+    	ArraySerializableInterface, haben also die Methoden exchangeArray() und getArrayCopy().
+    	Entities und Datenbank sind also identisch, auch die Beziehung wird als Attribut im 
+    	Entity abgebildet. Die Prozeduren der Aktionen rund um die Entity liegen im ausgelagerten
+    	Service, also etwa bietet der RoomService eine Option genau eine Room-Entity zu holen,
+    	diese zu speichern oder alle Räume anzuzeigen. Intern wird das TableGateway-Pattern 
+    	eingesetzt - es sollte noch ausgelotet werden, inwieweit Doctrine als OR-Mapper tauglich
+    	ist. Die Services selbst werden vom Controller als Attribut gehalten. Ebenfalls kann man 
+    	überlegen, inwieweit es Sinn macht, Fabriken und Interfaces auf dieser Ebene einzusetzen, 
+    	bewährte Module bieten dies an!
+    	</p>
     	<h2>Anwenderdokumentation</h2>
     	<h3>Anwendungsfälle</h3>
     	<p>

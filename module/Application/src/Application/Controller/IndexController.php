@@ -85,10 +85,6 @@ class IndexController extends AbstractActionController{
         	) 
         );
     }
-
-	public function historieAction(){
-        return new ViewModel();
-    }
     
     public function loginAction(){
 		// Weiterleitung an ZfcUser
