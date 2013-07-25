@@ -65,17 +65,19 @@ class IndexController extends AbstractActionController{
     public function indexAction(){
     	// Check Session
     	// db interaction
-    	$db = $this->getServiceLocator()->get('db');
-    	$query = "SELECT * FROM widget WHERE name LIKE 'home';";
-    	$res = $db->query(
-    		$query, Adapter::QUERY_MODE_EXECUTE
-    	);
-    	foreach($res as $row){
-    		$header = $row['header'];
-    		$content = $row['content'];
-    		//Debug::dump($row);
-    	}
+//     	$db = $this->getServiceLocator()->get('db');
+//     	$query = "SELECT * FROM widget WHERE name LIKE 'home';";
+//     	$res = $db->query(
+//     		$query, Adapter::QUERY_MODE_EXECUTE
+//     	);
+//     	foreach($res as $row){
+//     		$header = $row['header'];
+//     		$content = $row['content'];
+//     		//Debug::dump($row);
+//     	}
     	
+    	$header = "Ueberschrift";
+    	$content = "<p>Mein Inhaltsbereich.</p>";
     	// View-Variable bestuecken
         return new ViewModel(
         	array(
