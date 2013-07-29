@@ -7,13 +7,14 @@ class FtpUpdate {
 	// -----------------------------------------------------------------------------
 	// Anmerkungen:
 	// Lokal wird in Eclipse entwickelt, das Skript zur Web-Aktualisierung gerufen;
-	// cd in Verzeichnis C:\xampp\htdocs\EhcServer, dann php ftpudate.php aufrufen;
+	// cd in C:\xampp\htdocs\EhcServer\public\devscripts,dann php ftpudate.php ;
 	// PHP-Skriptlaufzeit erfolgt lokal ohne Zeitlimit, auf dem Server 30 Sekunden;
 	// Dateien auf dem Ziel-FTP-Ordner werden mit lokalem Workspace synchronisiert;
 	
 	private $version = "";
 	private $date = "";
 	private $pathToServerRoot = "";
+	private $pathToLocalRoot = "";
 	private $ftpHost = "";
 	private $ftpPort = "";
 	private $ftpUser = "";
@@ -28,6 +29,7 @@ class FtpUpdate {
 		$this->version = $ftpConfig->getVersion();
 		$this->date = $ftpConfig->getDate();
 		$this->pathToServerRoot = $ftpConfig->getPathToServerRoot();
+		$this->pathToLocalRoot = $ftpConfig->getPathToLocalRoot();
 		$this->ftpHost = $ftpConfig->getFtpHost();
 		$this->ftpPort = $ftpConfig->getFtpPort();
 		$this->ftpUser = $ftpConfig->getFtpUser();
@@ -73,36 +75,37 @@ class FtpUpdate {
 		// Verzeichniswechsel in ServerRoot 
 		ftp_chdir($conn_id, $this->pathToServerRoot);
 		
-		// delete former files in root
-		$rootFiles = array(
-				"composer.json",
-				"composer.lock",
-				"composer.phar",
-				"ftpbuild.php",
-				"ftpconfig.php",
-				"ftpupdate.php",
-				"init_autoloader.php",
-				"LICENSE.txt",
-				"README.md",
-				"composer.lock",
-		);
+		// Passivmodus erzwingen, hinter einer Firewall oft notwendig
+		ftp_pasv($conn_id, true);
 		
-		foreach($rootFiles as $file){
-			// Loeschen
-			if (ftp_delete($conn_id, $file)) {
-				echo "* $file erfolgreich geloescht.\n";
-			} else {
-				echo "* Ein Fehler trat beim Loeschen von $file auf.\n";
-			}
+		// ---------------------------------------------------------------------
+		// ROOT, delete former files in root
+// 		$rootFiles = array(
+// 				"composer.json",
+// 				"composer.lock",
+// 				"composer.phar",
+// 				"init_autoloader.php",
+// 				"LICENSE.txt",
+// 				"README.md",
+// 				"composer.lock",
+// 		);
+// 		foreach($rootFiles as $file){
+// 			// Loeschen
+// 			if (ftp_delete($conn_id, $file)) {
+// 				echo "* $file erfolgreich geloescht.\n";
+// 			} else {
+// 				echo "* Ein Fehler trat beim Loeschen von $file auf.\n";
+// 			}
 			
-			// Hochladen
-			if (ftp_put($conn_id, $file, $file, FTP_ASCII)) {
-				echo "* $file erfolgreich hochgeladen.\n";
-			} else {
-				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
-			}
-		}
+// 			// Hochladen
+// 			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
+// 				echo "* $file erfolgreich hochgeladen (von " . ($this->pathToLocalRoot . $file) . " nach " . $file . ");\n";
+// 			} else {
+// 				echo "* Ein Fehler trat beim Hochladen von $file auf (von " . ($this->pathToLocalRoot . $file) . " nach " . $file . ");\n";
+// 			}
+// 		}
 		
+		// ---------------------------------------------------------------------
 		// config, autoload ordner 
 		$configFiles = array(
 				"config/autoload/global.php",
@@ -110,7 +113,6 @@ class FtpUpdate {
 				"config/autoload/zfcuser.global.php",
 				"config/application.config.php",
 		);
-		
 		foreach($configFiles as $file){
 			// Loeschen
 			if (ftp_delete($conn_id, $file)) {
@@ -120,13 +122,35 @@ class FtpUpdate {
 			}
 
 			// Hochladen
-			if (ftp_put($conn_id, $file, $file, FTP_ASCII)) {
+			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
 				echo "* $file erfolgreich hochgeladen.\n";
 			} else {
 				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
 			}
 		}
 		
+		// ---------------------------------------------------------------------
+		// data ordner
+		$dataFiles = array(
+				"data/db/db.sqlite"
+		);
+		foreach($dataFiles as $file){
+			// Loeschen
+			if (ftp_delete($conn_id, $file)) {
+				echo "* $file erfolgreich geloescht.\n";
+			} else {
+				echo "* Ein Fehler trat beim Loeschen von $file auf.\n";
+			}
+		
+			// Hochladen
+			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
+				echo "* $file erfolgreich hochgeladen.\n";
+			} else {
+				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
+			}
+		}
+		
+		// ---------------------------------------------------------------------
 		// module, Application, config
 		$moduleFiles = array(
 				"module/Application/config/module.config.php",
@@ -166,8 +190,7 @@ class FtpUpdate {
 				"module/Application/view/zfc-user/user/index.phtml",
 				"module/Application/view/zfc-user/user/login.phtml",
 				"module/Application/Module.php",
-		);	
-		
+		);
 		foreach($moduleFiles as $file){
 			// Loeschen
 			if (ftp_delete($conn_id, $file)) {
@@ -177,19 +200,23 @@ class FtpUpdate {
 			}
 
 			// Hochladen
-			if (ftp_put($conn_id, $file, $file, FTP_ASCII)) {
+			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
 				echo "* $file erfolgreich hochgeladen.\n";
 			} else {
 				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
 			}
 		}
 			
+		// ---------------------------------------------------------------------
+		// public
 		$publicFiles = array(
 				"public/index.php",
 				"public/css/style.css",
 				"public/js/script.js",
+				"public/devscripts/ftpbuild.php",
+				"public/devscripts/ftpconfig.php",
+				"public/devscripts/ftpupdate.php",
 		);
-			
 		foreach($publicFiles as $file){
 			// Loeschen
 			if (ftp_delete($conn_id, $file)) {
@@ -199,7 +226,7 @@ class FtpUpdate {
 			}
 				
 			// Hochladen
-			if (ftp_put($conn_id, $file, $file, FTP_ASCII)) {
+			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
 				echo "* $file erfolgreich hochgeladen.\n";
 			} else {
 				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
