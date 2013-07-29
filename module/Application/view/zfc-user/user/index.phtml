@@ -1,7 +1,16 @@
+<!-- E|Home-Center Header -->
+<div class="row">
+	<div class="span12">
+		<p style="text-align: center;">
+			<img src="http://ehcserver.jochen-bauer.net/img/ehome-center-header.jpg"
+				alt="Bild Header E|Home-Center" />
+		</p>
+	</div>
+</div>
+<h1>Cockpit</h1>
+<hr>
 <div style="float:left; padding-right:16px;">
-<?php 
-	echo $this->gravatar($this->zfcUserIdentity()->getEmail()) 
-?>
+	<?php echo $this->gravatar($this->zfcUserIdentity()->getEmail()) ?>
 </div>
 <h3>Hallo <?php echo $this->zfcUserDisplayName() ?></h3>
 <div style="clear:both;"></div>
@@ -43,13 +52,27 @@ foreach($roomsPaginator->getCurrentItems() as $room){
     <div class="span12">
         <h2>Haussystem</h2>
         <p>Energiefüllstand Solaranlage; Anzahl der Benutzer; Datenzugriffe extern;</p>
-        <p><a class="btn btn-success" href="http://framework.zend.com/zf2" target="_blank">Betreten &raquo;</a></p>
+        <p><a class="btn" href="">Betreten</a></p>
     </div>
 </div>
 <div class="row">
     <div class="span12">
-        <h2>Dokumentation</h2>
-        <h3>Anwendungsfälle</h3>
+        <h2>Gemeinschaftsmodul</h2>
+        <p>Organisation der Gartenbepflanzung</p>
+        <p><a class="btn" href="">Betreten</a></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h2>Hilfebereich</h2>
+        <h3>Anwender-Geschichten</h3>
         <p>Die Temperatur um ein Grad erhöhen.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h2>Beispiele Oberflächenkomponenten</h2>
+        <p><a class="btn btn-success" href="" target="_blank">Erfolgsbutton mit Pfeilen &raquo;</a></p>
+        <p><a class="btn" href="">Normaler Button</a></p>
     </div>
 </div>

@@ -75,13 +75,13 @@ class RoomService {
     
     public function fetchList($page = 1, $perPage = 15){
     	if ($page == "JSON"){ // TODO dirty!
-    		Debug::dump("RoomService.fetchList(JSON)");
+    		//Debug::dump("RoomService.fetchList(JSON)");
     		return array( 
     			1 => "moep",
     			2 => "maap"
     		);
     	}	
-    	Debug::dump("RoomService.fetchList()");
+    	//Debug::dump("RoomService.fetchList()");
     	// TODO vermutlich bekommt der Aufruf via Rest eine eigene Methode,
     	// oder der RestController baut das Objekt bzw. die Liste in ein Array um;
 //     	return array( 

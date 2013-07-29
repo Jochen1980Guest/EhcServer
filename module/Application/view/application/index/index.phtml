@@ -1,6 +1,18 @@
 <!-- Startseite -->
+<div class="row">
+	<div class="span12">
+		<p style="text-align: center;">
+			<img src="http://ehcserver.jochen-bauer.net/img/ehome-center-logo.png"
+				alt="Bild Header E|Home-Center" />
+		</p>
+	</div>
+</div>
 <div class="hero-unit">
-    <h1><?php echo sprintf("Willkommen zu Hause!", '<span class="zf-green">', '</span>') ?></h1>
-    <p>Musterweg 13, 12345 Musterstadt</p>
-    <p><a class="btn btn-success btn-large" href="http://ehcserver.jochen-bauer.net/index/login" target="_blank">Einloggen &raquo;</a></p>
+    <h1><?php echo sprintf("EHC-Webanwendung", '<span class="zf-green">', '</span>') ?></h1>
+    <p>
+    	Musterweg 13, 12345 Musterstadt
+    </p>
+    <p>
+    	<a class="btn btn-warning btn-large" href="<?php echo $this->url('login') ?>">Eintreten &raquo;</a>
+    </p>
 </div>
