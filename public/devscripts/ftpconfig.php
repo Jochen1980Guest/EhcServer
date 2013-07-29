@@ -27,8 +27,8 @@ class FtpConfig {
 	public function __construct(){
 		
 		// Zielortunabhaengig
-		$this->version = "1.0";
-		$this->date = "24.07.2013";
+		$this->version = "1.0.1";
+		$this->date = "29.07.2013";
 		
 		// lokaler Testserver 
 // 		$this->pathToServerRoot = "";
@@ -53,15 +53,15 @@ class FtpConfig {
 // 		$this->dbPass = "";
 		
 		// Produktivumgebung ehome-center
-		$this->pathToServerRoot = "";
-		$this->ftpHost = "";
-		$this->ftpPort = "";
-		$this->ftpUser = "";
-		$this->ftpPass = "";
-		$this->dbHost = "";
-		$this->dbName = "";
-		$this->dbUser = "";
-		$this->dbPass = "";
+// 		$this->pathToServerRoot = "";
+// 		$this->ftpHost = "";
+// 		$this->ftpPort = "";
+// 		$this->ftpUser = "";
+// 		$this->ftpPass = "";
+// 		$this->dbHost = "";
+// 		$this->dbName = "";
+// 		$this->dbUser = "";
+// 		$this->dbPass = "";
 	}
 	
 	// Accessors 
