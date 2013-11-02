@@ -93,6 +93,17 @@ return array(
             				),
             		),
             ),
+            'showroom' => array(
+            		'type' => 'Segment',
+            		'options' => array(
+            				'route'    => '/:id',
+            				'defaults' => array(
+            						'controller' => 'ZfcUser\Controller\User',
+            						'action'     => 'showRoom',
+            						'id'		 => '1',
+            				),
+            		),
+            ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -129,7 +140,8 @@ return array(
     		'invokables' => array(
     				'Application\Controller\Index' 		=> 'Application\Controller\IndexController',
     				'Application\Controller\Rest' 		=> 'Application\Controller\RestController',
-    				'Application\Controller\Utilities' 	=> 'Application\Controller\UtilitiesController'
+    				'Application\Controller\Utilities' 	=> 'Application\Controller\UtilitiesController',
+    				'ZfcUser\Controller\User'			=> 'ZfcUser\Controller\UserController'
     		),
     ),
     'service_manager' => array(

@@ -23,7 +23,6 @@ class UserController extends AbstractActionController
     const ROUTE_LOGIN        = 'zfcuser/login';
     const ROUTE_REGISTER     = 'zfcuser/register';
     const ROUTE_CHANGEEMAIL  = 'zfcuser/changeemail';
-
     const CONTROLLER_NAME    = 'zfcuser';
 
     /**
@@ -62,6 +61,38 @@ class UserController extends AbstractActionController
      */
     protected $options;
 
+    
+    // joba actions
+    public function showRoomAction(){
+    	// Check for session
+    	if (!$this->zfcUserAuthentication()->hasIdentity()) {
+    		return $this->redirect()->toRoute(static::ROUTE_LOGIN);
+    	}
+    	
+    	
+    	
+    	//$dstr = "Mein Debugstring";
+//     	$query = "mykey";
+//     	$dstr = $this->params()->fromQuery();
+//     	Debug::dump($dstr);
+    	
+    	
+    	// get room 
+//     	$adapter = $this->getServiceLocator()->get('db');
+//     	$table = "room";
+//     	$roomTable = new TableGateway($table, $adapter);
+//     	$roomService = new RoomService(); 
+//     	$roomService->setTable($roomTable);
+//     	$roomsPaginator = $roomService->fetchList();
+    	
+//     	return new ViewModel(array(
+//     			//'roomsPaginator'	=> $roomsPaginator,
+//     	));
+    	return new ViewModel(array(
+    			'roomId' => 3,
+    			));
+    }
+    
     /**
      * User page
      */
