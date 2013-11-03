@@ -14,6 +14,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Stdlib\ResponseInterface as Response;
 use Zend\Stdlib\Parameters;
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 use ZfcUser\Service\User as UserService;
 use ZfcUser\Options\UserControllerOptionsInterface;
 
@@ -60,7 +61,10 @@ class UserController extends AbstractActionController
      * @var UserControllerOptionsInterface
      */
     protected $options;
-
+    
+    public function setViewType($viewType){
+    	$this->viewType = $viewType;
+    }
     
     // joba actions
     public function showRoomAction(){
@@ -98,7 +102,7 @@ class UserController extends AbstractActionController
      */
     public function indexAction()
     {
-        if (!$this->zfcUserAuthentication()->hasIdentity()) {
+        if (!$this->zfcUserAuthentication()->hasIdentity()){ // check for valid session
             return $this->redirect()->toRoute(static::ROUTE_LOGIN);
         }
         
@@ -108,6 +112,15 @@ class UserController extends AbstractActionController
         $numberOfLinesToRead = 10;
         $logMessages = $utilitiesController->readLastLinesOfFile($path, $numberOfLinesToRead);
         
+        // functional or room based profile view
+        $viewTypeContainer = new Container('viewType');
+        $viewType = $viewTypeContainer->viewType;
+        if ($viewType == 1){
+        	// TODO Funktions-Sicht aufbauen
+        	return new ViewModel(array(
+        			'logMessages' 		=> $logMessages,
+        	));
+        }
         // get room entities
         $adapter = $this->getServiceLocator()->get('db');
         $table = "room";
@@ -115,7 +128,6 @@ class UserController extends AbstractActionController
         $roomService = new RoomService(); // TODO via module.config oder Module.php via DI anliefern
         $roomService->setTable($roomTable);
         $roomsPaginator = $roomService->fetchList();
-        //Debug::dump($rooms);
         return new ViewModel(array(
         	'logMessages' 		=> $logMessages,
         	'roomsPaginator'	=> $roomsPaginator,
@@ -155,6 +167,15 @@ class UserController extends AbstractActionController
         $this->zfcUserAuthentication()->getAuthAdapter()->resetAdapters();
         $this->zfcUserAuthentication()->getAuthService()->clearIdentity();
 
+        // set view type in session
+        $viewTypeContainer = new Container('viewType');
+        if ($request->getPost('submit') == "showRooms"){ // TODO set const
+        	$viewTypeContainer->viewType = 0;
+        } else if ($request->getPost('submitFunctionalView') == "showFunctions"){ // TODO set const
+        	$viewTypeContainer->viewType = 1;
+        } else {
+        	$viewTypeContainer->viewType = 0;
+        }     
         return $this->forward()->dispatch(static::CONTROLLER_NAME, array('action' => 'authenticate'));
     }
 

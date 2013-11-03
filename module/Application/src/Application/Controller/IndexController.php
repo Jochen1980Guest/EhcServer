@@ -90,16 +90,25 @@ class IndexController extends AbstractActionController{
     
     public function loginAction(){
 		// Weiterleitung an ZfcUser
+		// TODO Unterscheidung nach Art des Submit-Buttons
+		// Funktional, Raumbasiert
     	return $this->redirect()->toRoute('zfcuser');
     }
     
     public function tempAction(){
+    	// development cycle: 
     	// create action controller, testAction()
     	// create route in module.config.php
     	// return Model for corresponding view, test.phtml
     	$header = "IndexController.tempAction()";
     	$content = "";
-    	$content .= "<h2>Webclient</h2>";
+    	
+    	// --------------------------------------------------------
+    	// forward to room centered profile view
+    	// return $this->redirect()->toRoute('zfcuser');
+    	// --------------------------------------------------------
+    	
+    	// $content .= "<h2>Webclient</h2>";
     	// Alternativ Youtube API nutzen
     	//$urlString = "http://gdata.youtube.com/feeds/api/videos?orderby=published&alt=json&q=ios";
     	//$urlString = "http://ehcserver.localhost/rest/4";

@@ -59,13 +59,26 @@ class Login extends ProvidesEventsForm
 
         $submitElement = new Element\Button('submit');
         $submitElement
-            ->setLabel('Abschicken')
+            ->setLabel('Abschicken [raumbasierte Sicht]')
+            ->setValue('showRooms')
             ->setAttributes(array(
                 'type'  => 'submit',
             ));
 
         $this->add($submitElement, array(
             'priority' => -100,
+        ));
+        
+        $submitElementFunctionalView = new Element\Button('submitFunctionalView');
+        $submitElementFunctionalView
+        ->setLabel('Abschicken [funktionsbasierte Sicht]')
+        ->setValue('showFunctions')
+        ->setAttributes(array(
+        		'type'  => 'submit',
+        ));
+        
+        $this->add($submitElementFunctionalView, array(
+        		'priority' => -101,
         ));
 
         $this->getEventManager()->trigger('init', $this);

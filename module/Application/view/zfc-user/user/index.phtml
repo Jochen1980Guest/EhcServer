@@ -41,11 +41,13 @@ foreach($logMessages as $logMessage){
     <div class="span12">
         <h2>Räume</h2>
 <?php 
-$roomIndex = 1;
-foreach($roomsPaginator->getCurrentItems() as $room){
-	//$roomURL = 'zfcuser/showroom' . '/' . $roomIndex;
-	echo "<p>Name: " . $room['name'] . "; Luftfeuchtigkeit: " . $room['humidity'] . ";  <a class='btn' href='" . $this->url('showroom', array('id' => $roomIndex))  . "'>Betreten &raquo;</a></p>";
-	$roomIndex++;
+if ($roomsPaginator != null){
+	$roomIndex = 1;
+	foreach($roomsPaginator->getCurrentItems() as $room){
+		//$roomURL = 'zfcuser/showroom' . '/' . $roomIndex;
+		echo "<p>Name: " . $room['name'] . "; Luftfeuchtigkeit: " . $room['humidity'] . ";  <a class='btn' href='" . $this->url('showroom', array('id' => $roomIndex))  . "'>Betreten &raquo;</a></p>";
+		$roomIndex++;
+	}
 }
 ?>     
     </div>

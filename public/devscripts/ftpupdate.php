@@ -109,48 +109,48 @@ class FtpUpdate {
 		
 		// ---------------------------------------------------------------------
 		// config, autoload ordner 
-		$configFiles = array(
-				"config/autoload/global.php",
-				"config/autoload/local.php.dist",
-				"config/autoload/zfcuser.global.php",
-				"config/application.config.php",
-		);
-		foreach($configFiles as $file){
-			// Loeschen
-			if (ftp_delete($conn_id, $file)) {
-				echo "* $file erfolgreich geloescht.\n";
-			} else {
-				echo "* Ein Fehler trat beim Loeschen von $file auf.\n";
-			}
+// 		$configFiles = array(
+// 				"config/autoload/global.php",
+// 				"config/autoload/local.php.dist",
+// 				"config/autoload/zfcuser.global.php",
+// 				"config/application.config.php",
+// 		);
+// 		foreach($configFiles as $file){
+// 			// Loeschen
+// 			if (ftp_delete($conn_id, $file)) {
+// 				echo "* $file erfolgreich geloescht.\n";
+// 			} else {
+// 				echo "* Ein Fehler trat beim Loeschen von $file auf.\n";
+// 			}
 
-			// Hochladen
-			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
-				echo "* $file erfolgreich hochgeladen.\n";
-			} else {
-				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
-			}
-		}
+// 			// Hochladen
+// 			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
+// 				echo "* $file erfolgreich hochgeladen.\n";
+// 			} else {
+// 				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
+// 			}
+// 		}
 		
 		// ---------------------------------------------------------------------
 		// data ordner
-		$dataFiles = array(
-				"data/db/db.sqlite"
-		);
-		foreach($dataFiles as $file){
-			// Loeschen
-			if (ftp_delete($conn_id, $file)) {
-				echo "* $file erfolgreich geloescht.\n";
-			} else {
-				echo "* Ein Fehler trat beim Loeschen von $file auf.\n";
-			}
+// 		$dataFiles = array(
+// 				"data/db/db.sqlite"
+// 		);
+// 		foreach($dataFiles as $file){
+// 			// Loeschen
+// 			if (ftp_delete($conn_id, $file)) {
+// 				echo "* $file erfolgreich geloescht.\n";
+// 			} else {
+// 				echo "* Ein Fehler trat beim Loeschen von $file auf.\n";
+// 			}
 		
-			// Hochladen
-			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
-				echo "* $file erfolgreich hochgeladen.\n";
-			} else {
-				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
-			}
-		}
+// 			// Hochladen
+// 			if (ftp_put($conn_id, $file, ($this->pathToLocalRoot . $file), FTP_ASCII)) {
+// 				echo "* $file erfolgreich hochgeladen.\n";
+// 			} else {
+// 				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
+// 			}
+// 		}
 		
 		// ---------------------------------------------------------------------
 		// module, Application, config
@@ -192,6 +192,8 @@ class FtpUpdate {
 				"module/Application/view/zfc-user/user/index.phtml",
 				"module/Application/view/zfc-user/user/login.phtml",
 				"module/Application/Module.php",
+				"module/ZfcUser/src/ZfcUser/Controller/UserController.php",
+				"module/ZfcUser/src/ZfcUser/Form/Login.php",
 		);
 		foreach($moduleFiles as $file){
 			// Loeschen
@@ -208,7 +210,7 @@ class FtpUpdate {
 				echo "* Ein Fehler trat beim Hochladen von $file auf.\n";
 			}
 		}
-			
+		
 		// ---------------------------------------------------------------------
 		// public
 		$publicFiles = array(
