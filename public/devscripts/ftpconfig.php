@@ -15,6 +15,7 @@ class FtpConfig {
 	private $version = "";
 	private $date = "";
 	private $pathToServerRoot = "";
+	private $pathToLocalRoot = "";
 	private $ftpHost = "";
 	private $ftpPort = "";
 	private $ftpUser = "";
@@ -32,6 +33,7 @@ class FtpConfig {
 		
 		// lokaler Testserver 
 // 		$this->pathToServerRoot = "";
+//		$this->pathToLocalRoot = "";
 // 		$this->ftpHost = "";
 // 		$this->ftpPort = "";
 // 		$this->ftpUser = "";
@@ -42,15 +44,16 @@ class FtpConfig {
 // 		$this->dbPass = "";
 		
 		// Produktivumgebung joba
-// 		$this->pathToServerRoot = "";
-// 		$this->ftpHost = "";
-// 		$this->ftpPort = "";
-// 		$this->ftpUser = "";
-// 		$this->ftpPass = "";
-// 		$this->dbHost = "";
-// 		$this->dbName = "";
-// 		$this->dbUser = "";
-// 		$this->dbPass = "";
+		$this->pathToServerRoot = "";
+		$this->pathToLocalRoot = "";
+		$this->ftpHost = "";
+		$this->ftpPort = "";
+		$this->ftpUser = "";
+		$this->ftpPass = "";
+		$this->dbHost = "";
+		$this->dbName = "";
+		$this->dbUser = "";
+		$this->dbPass = "";
 		
 		// Produktivumgebung ehome-center
 // 		$this->pathToServerRoot = "";
@@ -75,6 +78,10 @@ class FtpConfig {
 	
 	public function getPathToServerRoot(){
 		return $this->pathToServerRoot;
+	}
+	
+	public function getPathToLocalRoot(){
+		return $this->pathToLocalRoot;
 	}
 	
 	public function getFtpHost(){

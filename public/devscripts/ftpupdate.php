@@ -7,7 +7,9 @@ class FtpUpdate {
 	// -----------------------------------------------------------------------------
 	// Anmerkungen:
 	// Lokal wird in Eclipse entwickelt, das Skript zur Web-Aktualisierung gerufen;
-	// cd in C:\xampp\htdocs\EhcServer\public\devscripts,dann php ftpudate.php ;
+	// cd in C:\xampp\htdocs\EhcServer\public\devscripts,dann php ftpudate.php;
+	// cd in \Users\jobauer\workspace\EhcServer\public\devscripts;
+	// dann \Users\jobauer\joba\software\xampp\php\php.exe ftpupdate.php;
 	// PHP-Skriptlaufzeit erfolgt lokal ohne Zeitlimit, auf dem Server 30 Sekunden;
 	// Dateien auf dem Ziel-FTP-Ordner werden mit lokalem Workspace synchronisiert;
 	
