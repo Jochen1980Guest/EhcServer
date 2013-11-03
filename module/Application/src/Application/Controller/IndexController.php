@@ -103,11 +103,11 @@ class IndexController extends AbstractActionController{
     	// Alternativ Youtube API nutzen
     	//$urlString = "http://gdata.youtube.com/feeds/api/videos?orderby=published&alt=json&q=ios";
     	//$urlString = "http://ehcserver.localhost/rest/4";
-    	$urlString = "http://ehcserver.localhost/rest";
-    	$client = new Client($urlString);
-    	$client->setMethod('get');
-    	$response = $client->send();
-    	$content .= "<pre>" . $response->getContent() . "</pre>";
+//     	$urlString = "http://ehcserver.localhost/rest";
+//     	$client = new Client($urlString);
+//     	$client->setMethod('get');
+//     	$response = $client->send();
+//     	$content .= "<pre>" . $response->getContent() . "</pre>";
     	
     	// Zend Session 
 //     	$userSession = new Container('user'); // use Zend\Session\Container;
