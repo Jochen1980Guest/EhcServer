@@ -35,7 +35,7 @@ class IndexController extends AbstractActionController{
 	protected $roomService;
 	protected $residentService;
 	
-	public function setUserService(UserService $userService){
+	public function setUserService(UserService $userService){ // Comment
 		$this->userService = $userService;
 		return $this;
 	}
