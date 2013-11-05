@@ -22,9 +22,9 @@ return array(
     ),
 	'db' => array(
 		'driver'    => 'pdo',
-		'dsn'       => 'mysql:dbname=ehc;host=localhost',
-		'username'  => 'ehc',
-		'password'  => 'ehc',
+		'dsn'       => 'mysql:dbname=XXX;host=localhost',
+		'username'  => 'XXX',
+		'password'  => 'XXX',
 		'driver_options' => array(
 			PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
 		),
