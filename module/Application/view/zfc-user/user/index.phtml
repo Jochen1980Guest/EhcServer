@@ -10,18 +10,18 @@
 		<h2>Einstellungen</h2>
 		<p>
 			<a class="btn" href="<?php echo $this->url('zfcuser/logout') ?>">Ausloggen</a>
-			<a class="btn" href="<?php echo $this->url('zfcuser/changeemail') ?>">E-Mail
-				ändern</a> <a class="btn"
-				href="<?php echo $this->url('zfcuser/changepassword') ?>">Passwort
-				ändern</a>
+			<a class="btn" href="<?php echo $this->url('zfcuser/changeemail') ?>">E-Mail ändern</a> 
+			<a class="btn" href="<?php echo $this->url('zfcuser/changepassword') ?>">Passwort ändern</a>
 		</p>
 	</div>
 </div>
 <hr>
+<!-- 
 <div class="row">
 	<div class="span12">
 		<h2>Debug</h2>
-<?php 
+<?php
+/* 
 if ($roomsPaginator != null){
 	$roomIndex = 1;
 	$rooms = $roomsPaginator->getCurrentItems();
@@ -31,20 +31,22 @@ if ($roomsPaginator != null){
 		$roomIndex ++;
 	}
 }
+*/
 ?>
 	</div>
 </div>
 <hr>
+-->
+<!-- 
 <div class="row">
 	<div class="span12">
 		<p style="text-align: center;">
-			<img
-				src="http://ehcserver.jochen-bauer.net/img/ehome-center-header.jpg"
-				alt="Bild Header E|Home-Center" />
+			<img src="http://ehcserver.jochen-bauer.net/img/ehome-center-header.jpg" alt="Bild Header E|Home-Center" />
 		</p>
 	</div>
 </div>
 <hr>
+ -->
 <div class="row">
 	<div class="span12">
 		<h2>Systemnachrichten</h2>
@@ -53,10 +55,11 @@ foreach($logMessages as $logMessage){
 	echo "<p>" . $logMessage . "</p>";
 }
 ?>
+<!-- 
  		<p>
-			<a class="btn" href="<?php echo $this->url('clearlog'); ?>">Systemnachrichten
-				löschen</a>
+			<a class="btn" href="<?php // echo $this->url('clearlog'); ?>">Systemnachrichten löschen</a>
 		</p>
+-->
 	</div>
 </div>
 <div class="row">
@@ -67,23 +70,27 @@ if ($roomsPaginator != null){
 	$roomIndex = 1;
 	foreach($roomsPaginator->getCurrentItems() as $room){
 		//$roomURL = 'zfcuser/showroom' . '/' . $roomIndex;
-		echo "<p>Name: " . $room['name'] . "; Luftfeuchtigkeit: " . $room['humidity'] . ";  <a class='btn' href='" . $this->url('showroom', array('id' => $roomIndex))  . "'>Betreten &raquo;</a></p>";
+		echo "<p>Name: " . $room['name'] . "; Luftfeuchtigkeit: " . $room['humidity'] . "; <a class='btn' href='" . $this->url('showroom', array('id' => $roomIndex))  . "'>Betreten &raquo;</a></p>";
 		$roomIndex++;
 	}
 }
 ?>     
     </div>
 </div>
+<!-- 
 <div class="row">
 	<div class="span12">
 		<h2>Haussystem</h2>
-		<p>Energiefüllstand Solaranlage; Anzahl der Benutzer; Datenzugriffe
-			extern;</p>
+		<p>
+			Energiefüllstand Solaranlage; Anzahl der Benutzer; Datenzugriffe extern;
+		</p>
 		<p>
 			<a class="btn" href="">Betreten</a>
 		</p>
 	</div>
 </div>
+-->
+<!-- 
 <div class="row">
 	<div class="span12">
 		<h2>Gemeinschaftsmodul</h2>
@@ -93,6 +100,8 @@ if ($roomsPaginator != null){
 		</p>
 	</div>
 </div>
+-->
+<!-- 
 <div class="row">
 	<div class="span12">
 		<h2>Hilfebereich</h2>
@@ -100,6 +109,8 @@ if ($roomsPaginator != null){
 		<p>Die Temperatur um ein Grad erhöhen.</p>
 	</div>
 </div>
+ -->
+<!-- 
 <div class="row">
 	<div class="span12">
 		<h2>Beispiele Oberflächenkomponenten</h2>
@@ -112,3 +123,4 @@ if ($roomsPaginator != null){
 		</p>
 	</div>
 </div>
+-->
