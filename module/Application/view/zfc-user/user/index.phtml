@@ -1,45 +1,67 @@
-<!-- E|Home-Center Header -->
+<h1>Cockpit</h1>
+<hr>
+<div style="float: left; padding-right: 16px;">
+	<?php echo $this->gravatar($this->zfcUserIdentity()->getEmail()) ?>
+</div>
+<h3>Hallo <?php echo $this->zfcUserDisplayName() ?></h3>
+<div style="clear: both;"></div>
+<div class="row">
+	<div class="span12">
+		<h2>Einstellungen</h2>
+		<p>
+			<a class="btn" href="<?php echo $this->url('zfcuser/logout') ?>">Ausloggen</a>
+			<a class="btn" href="<?php echo $this->url('zfcuser/changeemail') ?>">E-Mail
+				ändern</a> <a class="btn"
+				href="<?php echo $this->url('zfcuser/changepassword') ?>">Passwort
+				ändern</a>
+		</p>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="span12">
+		<h2>Debug</h2>
+<?php 
+if ($roomsPaginator != null){
+	$roomIndex = 1;
+	$rooms = $roomsPaginator->getCurrentItems();
+	$rooms->buffer();
+	foreach ($rooms as $room ) {
+		echo "<p>Name: " . $room ['name'] . "; Luftfeuchtigkeit: " . $room ['humidity'] . ";</p>";
+		$roomIndex ++;
+	}
+}
+?>
+	</div>
+</div>
+<hr>
 <div class="row">
 	<div class="span12">
 		<p style="text-align: center;">
-			<img src="http://ehcserver.jochen-bauer.net/img/ehome-center-header.jpg"
+			<img
+				src="http://ehcserver.jochen-bauer.net/img/ehome-center-header.jpg"
 				alt="Bild Header E|Home-Center" />
 		</p>
 	</div>
 </div>
-<h1>Cockpit</h1>
 <hr>
-<div style="float:left; padding-right:16px;">
-	<?php echo $this->gravatar($this->zfcUserIdentity()->getEmail()) ?>
-</div>
-<h3>Hallo <?php echo $this->zfcUserDisplayName() ?></h3>
-<div style="clear:both;"></div>
 <div class="row">
-    <div class="span12">
-        <h2>Einstellungen</h2>
-        <p>
-        	<a class="btn" href="<?php echo $this->url('zfcuser/logout') ?>">Ausloggen</a>
-        	<a class="btn" href="<?php echo $this->url('zfcuser/changeemail') ?>">E-Mail ändern</a>
-        	<a class="btn" href="<?php echo $this->url('zfcuser/changepassword') ?>">Passwort ändern</a>
-        </p>
-    </div>
-</div>
-<div class="row">
-    <div class="span12">
-        <h2>Systemnachrichten</h2>
+	<div class="span12">
+		<h2>Systemnachrichten</h2>
 <?php 
 foreach($logMessages as $logMessage){
 	echo "<p>" . $logMessage . "</p>";
 }
 ?>
  		<p>
-        	<a class="btn" href="<?php echo $this->url('clearlog'); ?>">Systemnachrichten löschen</a>
-        </p>
-    </div>
+			<a class="btn" href="<?php echo $this->url('clearlog'); ?>">Systemnachrichten
+				löschen</a>
+		</p>
+	</div>
 </div>
 <div class="row">
-    <div class="span12">
-        <h2>Räume</h2>
+	<div class="span12">
+		<h2>Räume</h2>
 <?php 
 if ($roomsPaginator != null){
 	$roomIndex = 1;
@@ -53,30 +75,40 @@ if ($roomsPaginator != null){
     </div>
 </div>
 <div class="row">
-    <div class="span12">
-        <h2>Haussystem</h2>
-        <p>Energiefüllstand Solaranlage; Anzahl der Benutzer; Datenzugriffe extern;</p>
-        <p><a class="btn" href="">Betreten</a></p>
-    </div>
+	<div class="span12">
+		<h2>Haussystem</h2>
+		<p>Energiefüllstand Solaranlage; Anzahl der Benutzer; Datenzugriffe
+			extern;</p>
+		<p>
+			<a class="btn" href="">Betreten</a>
+		</p>
+	</div>
 </div>
 <div class="row">
-    <div class="span12">
-        <h2>Gemeinschaftsmodul</h2>
-        <p>Organisation der Gartenbepflanzung</p>
-        <p><a class="btn" href="">Betreten</a></p>
-    </div>
+	<div class="span12">
+		<h2>Gemeinschaftsmodul</h2>
+		<p>Organisation der Gartenbepflanzung</p>
+		<p>
+			<a class="btn" href="">Betreten</a>
+		</p>
+	</div>
 </div>
 <div class="row">
-    <div class="span12">
-        <h2>Hilfebereich</h2>
-        <h3>Anwender-Geschichten</h3>
-        <p>Die Temperatur um ein Grad erhöhen.</p>
-    </div>
+	<div class="span12">
+		<h2>Hilfebereich</h2>
+		<h3>Anwender-Geschichten</h3>
+		<p>Die Temperatur um ein Grad erhöhen.</p>
+	</div>
 </div>
 <div class="row">
-    <div class="span12">
-        <h2>Beispiele Oberflächenkomponenten</h2>
-        <p><a class="btn btn-success" href="" target="_blank">Erfolgsbutton mit Pfeilen &raquo;</a></p>
-        <p><a class="btn" href="">Normaler Button</a></p>
-    </div>
+	<div class="span12">
+		<h2>Beispiele Oberflächenkomponenten</h2>
+		<p>
+			<a class="btn btn-success" href="" target="_blank">Erfolgsbutton mit
+				Pfeilen &raquo;</a>
+		</p>
+		<p>
+			<a class="btn" href="">Normaler Button</a>
+		</p>
+	</div>
 </div>

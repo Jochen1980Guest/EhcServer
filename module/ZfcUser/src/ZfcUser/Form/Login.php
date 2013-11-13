@@ -69,7 +69,7 @@ class Login extends ProvidesEventsForm
             'priority' => -100,
         ));
         
-        $submitElementFunctionalView = new Element\Button('submitFunctionalView');
+        $submitElementFunctionalView = new Element\Button('submitFunctionalView'); // TODO ggf. gleichen Namen verwenden, Check
         $submitElementFunctionalView
         ->setLabel('Abschicken [funktionsbasierte Sicht]')
         ->setValue('showFunctions')
