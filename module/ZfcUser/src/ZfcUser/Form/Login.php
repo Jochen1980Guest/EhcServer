@@ -59,7 +59,8 @@ class Login extends ProvidesEventsForm
 
         $submitElement = new Element\Button('submit');
         $submitElement
-            ->setLabel('Abschicken [raumbasierte Sicht]')
+            //->setLabel('Abschicken [raumbasierte Sicht]')
+            ->setLabel('Abschicken')
             ->setValue('showRooms')
             ->setAttributes(array(
                 'type'  => 'submit',
